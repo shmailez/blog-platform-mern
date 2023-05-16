@@ -41,7 +41,7 @@ if (isLoading) {
           {obj.text}
         </p>
       </Post>
-      <CommentsBlock
+      {/* <CommentsBlock
         items={[
           // {
           //   user: {
@@ -61,7 +61,7 @@ if (isLoading) {
         isLoading={false}
       >
         <Index />
-      </CommentsBlock>
+      </CommentsBlock> */}
     </>
   );
 };

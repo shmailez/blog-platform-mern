@@ -13,6 +13,7 @@ export const Home = () => {
   const dispatch = useDispatch()
 
   const {posts, tags } = useSelector(state => state.posts)
+  const userData = useSelector(state => state.auth.data)
 
   const isPostsLoading = posts.status === 'loading'
 
@@ -29,7 +30,7 @@ export const Home = () => {
         <Tab label="Популярные" />
       </Tabs>
       <Grid container spacing={4}>
-        <Grid xs={8} item>
+        <Grid xs={12} item>
           {(isPostsLoading ? [...Array(5)] : posts.items).map((obj, index) => 
           isPostsLoading ? (
             <Post key={index} isLoading={true}/>
@@ -43,11 +44,11 @@ export const Home = () => {
               viewsCount={obj.viewsCount}
               commentsCount={3}
               tags={obj.tags}
-              isEditable
+              isEditable={userData?._id === obj.user._id}
             />
           ))}
         </Grid>
-        <Grid xs={4} item>
+        {/* <Grid xs={4} item>
           <TagsBlock items={['react', 'typescript', 'заметки']} isLoading={false} />
           <CommentsBlock
             items={[
@@ -68,7 +69,7 @@ export const Home = () => {
             ]}
             isLoading={true}
           />
-        </Grid>
+        </Grid> */}
       </Grid>
     </>
   );
